@@ -5,6 +5,8 @@ import { useMovies } from './hooks/useMovies';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
+import searchMobile from './assets/img/search.png'
+
 function useSearch() {
 
   const [search, updateSearch] = useState('')
@@ -81,7 +83,7 @@ function App() {
     <>
       <div className="page">
         <header>
-          <h1 style={{ textAlign: 'center '}}>Buscardor de películas</h1>
+          <h1 style={{ textAlign: "center " }}>Buscardor de películas</h1>
           <form className="form" onSubmit={handleSubmit}>
             <input
               style={{
@@ -98,7 +100,7 @@ function App() {
               <span className="none-mobile">Buscar</span>
               <img
                 className="display-mobile"
-                src="./src/assets/search.png"
+                src={searchMobile}
                 alt="search-mobile"
               />
             </button>
