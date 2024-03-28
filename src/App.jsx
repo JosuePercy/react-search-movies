@@ -53,6 +53,7 @@ function useSearch() {
 
 }
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
   const [ sort, setSort ] = useState(false)
   const { search, updateSearch, error } = useSearch()
   const { movies, getMovies, loading } = useMovies({ search, sort })
@@ -66,6 +67,11 @@ function App() {
      setSort(!sort)
    }
 
+   const handleSearchIcon = () => {
+       if (isOpen) setIsOpen(false);
+       else setIsOpen(true);
+   }
+
    const handleChange = (event) => {
      updateSearch(event.target.value);
    };
@@ -75,7 +81,7 @@ function App() {
     <>
       <div className="page">
         <header>
-          <h1>Buscardor de películas</h1>
+          <h1 style={{ textAlign: 'center '}}>Buscardor de películas</h1>
           <form className="form" onSubmit={handleSubmit}>
             <input
               style={{
@@ -87,19 +93,20 @@ function App() {
               name="query"
               placeholder="Avengers, Star Wars, The Matrix..."
             />
-            <input type='checkbox' onChange={ handleSort } checked={sort} />
-            <button type="submit">Buscar</button>
+            <input type="checkbox" onChange={handleSort} checked={sort} />
+            <button type="submit">
+              <span className="none-mobile">Buscar</span>
+              <img
+                className="display-mobile"
+                src="/src/assets/search.png"
+                alt="search-mobile"
+              />
+            </button>
           </form>
           {error && <p style={{ color: "red" }}>{error}</p>}
         </header>
 
-        <main>
-        {
-          loading 
-          ? <p>Cargando...</p> 
-          : <Movies movies={movies} />
-        }
-        </main>
+        <main>{loading ? <p>Cargando...</p> : <Movies movies={movies} />}</main>
       </div>
     </>
   );
