@@ -98,7 +98,7 @@ function App() {
               <span className="none-mobile">Buscar</span>
               <img
                 className="display-mobile"
-                src="/src/assets/search.png"
+                src="./src/assets/search.png"
                 alt="search-mobile"
               />
             </button>

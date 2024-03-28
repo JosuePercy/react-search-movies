@@ -17,8 +17,6 @@ function NoMoviesResults() {
   return <p style={{ textAlign: 'center'}}>No se encontraron peliculas para esta busqueda</p>;
 };
 
-
-
 export function Movies({ movies }) {
     
     const hasMovies = movies?.length > 0;
